@@ -6,7 +6,6 @@
         private static PreinitializedThreadSafeSingleton singleton = new PreinitializedThreadSafeSingleton();
         public static PreinitializedThreadSafeSingleton Obj => singleton;
 
-
         public string Name => "Preinitialized thread safe singleton!";
 
         static PreinitializedThreadSafeSingleton() { }
