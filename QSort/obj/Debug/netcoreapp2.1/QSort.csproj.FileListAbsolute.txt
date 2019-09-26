@@ -1,0 +1,11 @@
+C:\Users\evgen\source\repos\Mantra\QSort\bin\Debug\netcoreapp2.1\QSort.deps.json
+C:\Users\evgen\source\repos\Mantra\QSort\bin\Debug\netcoreapp2.1\QSort.runtimeconfig.json
+C:\Users\evgen\source\repos\Mantra\QSort\bin\Debug\netcoreapp2.1\QSort.runtimeconfig.dev.json
+C:\Users\evgen\source\repos\Mantra\QSort\bin\Debug\netcoreapp2.1\QSort.dll
+C:\Users\evgen\source\repos\Mantra\QSort\bin\Debug\netcoreapp2.1\QSort.pdb
+C:\Users\evgen\source\repos\Mantra\QSort\obj\Debug\netcoreapp2.1\QSort.csprojAssemblyReference.cache
+C:\Users\evgen\source\repos\Mantra\QSort\obj\Debug\netcoreapp2.1\QSort.csproj.CoreCompileInputs.cache
+C:\Users\evgen\source\repos\Mantra\QSort\obj\Debug\netcoreapp2.1\QSort.AssemblyInfoInputs.cache
+C:\Users\evgen\source\repos\Mantra\QSort\obj\Debug\netcoreapp2.1\QSort.AssemblyInfo.cs
+C:\Users\evgen\source\repos\Mantra\QSort\obj\Debug\netcoreapp2.1\QSort.dll
+C:\Users\evgen\source\repos\Mantra\QSort\obj\Debug\netcoreapp2.1\QSort.pdb

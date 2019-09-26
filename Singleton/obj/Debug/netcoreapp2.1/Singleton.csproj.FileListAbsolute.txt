@@ -1,0 +1,11 @@
+C:\Users\evgen\source\repos\Mantra\Singleton\bin\Debug\netcoreapp2.1\Singleton.deps.json
+C:\Users\evgen\source\repos\Mantra\Singleton\bin\Debug\netcoreapp2.1\Singleton.runtimeconfig.json
+C:\Users\evgen\source\repos\Mantra\Singleton\bin\Debug\netcoreapp2.1\Singleton.runtimeconfig.dev.json
+C:\Users\evgen\source\repos\Mantra\Singleton\bin\Debug\netcoreapp2.1\Singleton.dll
+C:\Users\evgen\source\repos\Mantra\Singleton\bin\Debug\netcoreapp2.1\Singleton.pdb
+C:\Users\evgen\source\repos\Mantra\Singleton\obj\Debug\netcoreapp2.1\Singleton.csprojAssemblyReference.cache
+C:\Users\evgen\source\repos\Mantra\Singleton\obj\Debug\netcoreapp2.1\Singleton.csproj.CoreCompileInputs.cache
+C:\Users\evgen\source\repos\Mantra\Singleton\obj\Debug\netcoreapp2.1\Singleton.AssemblyInfoInputs.cache
+C:\Users\evgen\source\repos\Mantra\Singleton\obj\Debug\netcoreapp2.1\Singleton.AssemblyInfo.cs
+C:\Users\evgen\source\repos\Mantra\Singleton\obj\Debug\netcoreapp2.1\Singleton.dll
+C:\Users\evgen\source\repos\Mantra\Singleton\obj\Debug\netcoreapp2.1\Singleton.pdb
