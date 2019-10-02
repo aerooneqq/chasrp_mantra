@@ -1,0 +1,11 @@
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\bin\Debug\netcoreapp2.1\LongestCommonSubstring.deps.json
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\bin\Debug\netcoreapp2.1\LongestCommonSubstring.runtimeconfig.json
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\bin\Debug\netcoreapp2.1\LongestCommonSubstring.runtimeconfig.dev.json
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\bin\Debug\netcoreapp2.1\LongestCommonSubstring.dll
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\bin\Debug\netcoreapp2.1\LongestCommonSubstring.pdb
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\obj\Debug\netcoreapp2.1\LongestCommonSubstring.csprojAssemblyReference.cache
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\obj\Debug\netcoreapp2.1\LongestCommonSubstring.csproj.CoreCompileInputs.cache
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\obj\Debug\netcoreapp2.1\LongestCommonSubstring.AssemblyInfoInputs.cache
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\obj\Debug\netcoreapp2.1\LongestCommonSubstring.AssemblyInfo.cs
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\obj\Debug\netcoreapp2.1\LongestCommonSubstring.dll
+C:\Users\evgen\source\repos\Mantra\LongestCommonSubstring\obj\Debug\netcoreapp2.1\LongestCommonSubstring.pdb
