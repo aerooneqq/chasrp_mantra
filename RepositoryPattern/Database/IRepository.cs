@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RepositoryPattern
+using RepositoryPattern.Filters.Base;
+
+namespace RepositoryPattern.Database
 {
     /// <summary>
     /// This is the main interface which provides the access to the databases' functions.
@@ -14,5 +14,7 @@ namespace RepositoryPattern
         void Insert(T entity);
         void Delete(IFilter filter);
         void Update(T entity);
+
+        void Print();
     }
 }

@@ -554,7 +554,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "sha512": "3I7xPcPD5mB9wzUOd4YnVtowd5QAgBjjGV4BQTJDlsqROaQV5hPiZ5Ta7bR04BJcwr1AQ6mbvIXab+tFwTtAvA==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -688,23 +688,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\evgen\\.nuget\\packages\\": {},
+    "C:\\Users\\Aero\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\evgen\\source\\repos\\Mantra\\LongestCommonSubstring\\LongestCommonSubstring.csproj",
+      "projectUniqueName": "C:\\Users\\Aero\\source\\repos\\chasrp_mantra\\LongestCommonSubstring\\LongestCommonSubstring.csproj",
       "projectName": "LongestCommonSubstring",
-      "projectPath": "C:\\Users\\evgen\\source\\repos\\Mantra\\LongestCommonSubstring\\LongestCommonSubstring.csproj",
-      "packagesPath": "C:\\Users\\evgen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\evgen\\source\\repos\\Mantra\\LongestCommonSubstring\\obj\\",
+      "projectPath": "C:\\Users\\Aero\\source\\repos\\chasrp_mantra\\LongestCommonSubstring\\LongestCommonSubstring.csproj",
+      "packagesPath": "C:\\Users\\Aero\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aero\\source\\repos\\chasrp_mantra\\LongestCommonSubstring\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\evgen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Aero\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -729,19 +729,13 @@
       "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
         "warn": true
