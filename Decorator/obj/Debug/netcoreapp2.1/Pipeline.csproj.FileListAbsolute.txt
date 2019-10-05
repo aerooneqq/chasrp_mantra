@@ -1,0 +1,10 @@
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\bin\Debug\netcoreapp2.1\Pipeline.deps.json
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\bin\Debug\netcoreapp2.1\Pipeline.runtimeconfig.json
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\bin\Debug\netcoreapp2.1\Pipeline.runtimeconfig.dev.json
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\bin\Debug\netcoreapp2.1\Pipeline.dll
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\bin\Debug\netcoreapp2.1\Pipeline.pdb
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\obj\Debug\netcoreapp2.1\Pipeline.csproj.CoreCompileInputs.cache
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\obj\Debug\netcoreapp2.1\Pipeline.AssemblyInfoInputs.cache
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\obj\Debug\netcoreapp2.1\Pipeline.AssemblyInfo.cs
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\obj\Debug\netcoreapp2.1\Pipeline.dll
+C:\Users\Aero\source\repos\chasrp_mantra\Decorator\obj\Debug\netcoreapp2.1\Pipeline.pdb

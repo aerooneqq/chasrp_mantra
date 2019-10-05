@@ -9,3 +9,14 @@ C:\Users\evgen\source\repos\Mantra\LongestCommonSubsequence\obj\Debug\netcoreapp
 C:\Users\evgen\source\repos\Mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.AssemblyInfo.cs
 C:\Users\evgen\source\repos\Mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.dll
 C:\Users\evgen\source\repos\Mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.pdb
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\bin\Debug\netcoreapp2.1\LongestCommonSubsequence.deps.json
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\bin\Debug\netcoreapp2.1\LongestCommonSubsequence.runtimeconfig.json
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\bin\Debug\netcoreapp2.1\LongestCommonSubsequence.runtimeconfig.dev.json
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\bin\Debug\netcoreapp2.1\LongestCommonSubsequence.dll
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\bin\Debug\netcoreapp2.1\LongestCommonSubsequence.pdb
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.csprojAssemblyReference.cache
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.csproj.CoreCompileInputs.cache
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.AssemblyInfoInputs.cache
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.AssemblyInfo.cs
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.dll
+C:\Users\Aero\source\repos\chasrp_mantra\LongestCommonSubsequence\obj\Debug\netcoreapp2.1\LongestCommonSubsequence.pdb

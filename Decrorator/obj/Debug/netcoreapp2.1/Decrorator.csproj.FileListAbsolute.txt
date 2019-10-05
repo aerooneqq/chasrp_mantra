@@ -1,0 +1,10 @@
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\bin\Debug\netcoreapp2.1\Decrorator.deps.json
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\bin\Debug\netcoreapp2.1\Decrorator.runtimeconfig.json
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\bin\Debug\netcoreapp2.1\Decrorator.runtimeconfig.dev.json
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\bin\Debug\netcoreapp2.1\Decrorator.dll
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\bin\Debug\netcoreapp2.1\Decrorator.pdb
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\obj\Debug\netcoreapp2.1\Decrorator.csproj.CoreCompileInputs.cache
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\obj\Debug\netcoreapp2.1\Decrorator.AssemblyInfoInputs.cache
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\obj\Debug\netcoreapp2.1\Decrorator.AssemblyInfo.cs
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\obj\Debug\netcoreapp2.1\Decrorator.dll
+C:\Users\Aero\source\repos\chasrp_mantra\Decrorator\obj\Debug\netcoreapp2.1\Decrorator.pdb
