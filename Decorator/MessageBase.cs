@@ -2,23 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Decorator
+namespace Decrorator
 {
     abstract class MessageBase : IMessage
     {
-        protected readonly string message;
-        protected readonly IMessage nextMessage;
-
-        public MessageBase(IMessage nextMessage, string message)
+        public readonly string message;
+        
+        public MessageBase(string message)
         {
             this.message = message;
-            this.nextMessage = nextMessage;
         }
 
-        public void Send()
-        {
-            Console.WriteLine(message);
-            nextMessage?.Send();
-        }
+        public abstract void Send();
     }
 }

@@ -1,16 +1,19 @@
 ﻿using System;
 
-namespace Decorator
+namespace Decrorator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            IMessage twitterMessage = new TwitterMessage(null, "Hello from twitter!");
-            IMessage facebookMessage = new FacebookMessage(twitterMessage, "Hello from facebook!");
-            IMessage vkMessage = new VKMessage(facebookMessage, "Hello from VK!");
+            IMessage facebookMessage = new FacebookMessage("Facebook message");
+            IMessage twitterMessage = new TwitterMessage("Twitter message");
+            IMessage vkMessage = new VkMessage("VK message");
 
-            vkMessage.Send();
+            IMessage messageDecorator = new MessageDecorator(new MessageDecorator(facebookMessage, twitterMessage),
+                vkMessage);
+
+            messageDecorator.Send();
         }
     }
 }

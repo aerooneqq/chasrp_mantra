@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Decorator
+namespace Decrorator
 {
-    class VKMessage : MessageBase
+    class VkMessage : MessageBase
     {
-        public VKMessage(IMessage nextMessage, string message) 
-            : base(nextMessage, message) {  }
+        public VkMessage(string message) : base(message) { }
+
+        public override void Send()
+        {
+            Console.WriteLine(message);
+        }
     }
 }

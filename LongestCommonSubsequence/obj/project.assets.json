@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aero\\source\\repos\\chasrp_mantra\\LongestCommonSubsequence\\LongestCommonSubsequence.csproj",
+      "projectUniqueName": "C:\\Users\\Aero\\Desktop\\C#\\csharp_mantra\\LongestCommonSubsequence\\LongestCommonSubsequence.csproj",
       "projectName": "LongestCommonSubsequence",
-      "projectPath": "C:\\Users\\Aero\\source\\repos\\chasrp_mantra\\LongestCommonSubsequence\\LongestCommonSubsequence.csproj",
+      "projectPath": "C:\\Users\\Aero\\Desktop\\C#\\csharp_mantra\\LongestCommonSubsequence\\LongestCommonSubsequence.csproj",
       "packagesPath": "C:\\Users\\Aero\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aero\\source\\repos\\chasrp_mantra\\LongestCommonSubsequence\\obj\\",
+      "outputPath": "C:\\Users\\Aero\\Desktop\\C#\\csharp_mantra\\LongestCommonSubsequence\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -729,16 +729,23 @@
       "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100-preview9-014004\\RuntimeIdentifierGraph.json"
       }
     }
   }
