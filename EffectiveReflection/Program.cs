@@ -13,6 +13,35 @@ namespace EffectiveReflection
     }
     class Program
     {
+        /*
+           Sample output:
+
+           GET method tests:
+           Property: AGE
+           Improved reflection: 00:00:00.0034034
+           Default reflection: 00:00:00.0351398
+
+           Property: YEAR
+           Improved reflection: 00:00:00.0019219
+           Default reflection: 00:00:00.0341300
+
+           Property: PASSWORD
+           Improved reflection: 00:00:00.0021932
+           Default reflection: 00:00:00.0341035
+
+           SET method tests:
+           Property: AGE
+           Improved reflection: 00:00:00.0113967
+           Default reflection: 00:00:00.0899024
+
+           Property: YEAR
+           Improved reflection: 00:00:00.0231877
+           Default reflection: 00:00:00.0761624
+
+           Property: PASSWORD
+           Improved reflection: 00:00:00.0088557
+           Default reflection: 00:00:00.0485557
+         */
         static void Main(string[] args)
         {
             Console.WriteLine("GET method tests: ");
