@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
+using System.Linq;
 
 namespace EffectiveReflection
 {
@@ -13,6 +14,9 @@ namespace EffectiveReflection
     {
         private static BindingFlags PropertySelectionFlags = BindingFlags.Public | BindingFlags.NonPublic | 
                                                              BindingFlags.Static | BindingFlags.Instance;
+
+        private static OpCode[] LdArgCodes = { OpCodes.Ldarg_0, OpCodes.Ldarg_1, OpCodes.Ldarg_2, OpCodes.Ldarg_3 };
+
         public static GetPropValueDel GetGetPropValueDel(this Type type, string propName)
         {
             PropertyInfo property = type.GetProperty(propName, PropertySelectionFlags);
@@ -61,7 +65,7 @@ namespace EffectiveReflection
             }
 
             DynamicMethod setterDynamicMethod = new DynamicMethod("SetPropValue", typeof(void),
-                new[] { typeof(object), typeof(object) }, typeof(object), true);
+                new[] { typeof(object), typeof(object) }, type, true);
 
             ILGenerator setterILGenerator = setterDynamicMethod.GetILGenerator();
 
@@ -73,6 +77,55 @@ namespace EffectiveReflection
             setterILGenerator.Emit(OpCodes.Ret);
 
             return setterDynamicMethod.CreateDelegate(typeof(SetPropertyValueDel)) as SetPropertyValueDel;
+        }
+
+        public static TDelegate GetMethodFunc<TDelegate>(this Type type, string methodName)
+            where TDelegate : Delegate
+        {
+            MethodInfo method = type.GetMethod(methodName);
+
+            if (method is null)
+            {
+                throw new ArgumentException($"The method {methodName} does not exist in {type.FullName}");
+            }
+
+            IList<Type> paramsTypes = method.GetParameters().Select(p => p.ParameterType).ToList();
+
+            if (paramsTypes.Count > 3)
+            {
+                throw new NotSupportedException();
+            }
+
+            Type o = typeof(object);
+            DynamicMethod dynamicMethod = new DynamicMethod(methodName, o, 
+                                                            paramsTypes.Prepend(o).Select(_ => o).ToArray(),
+                                                            type.Module, true);
+
+            ILGenerator iLGenerator = dynamicMethod.GetILGenerator();
+
+            iLGenerator.Emit(OpCodes.Ldarg_0);
+            iLGenerator.Emit(OpCodes.Castclass, type);
+
+            for (int i = 0; i < paramsTypes.Count; ++i)
+            {
+                iLGenerator.Emit(LdArgCodes[i + 1]);
+
+                if (paramsTypes[i].IsValueType)
+                {
+                    iLGenerator.Emit(OpCodes.Unbox_Any, paramsTypes[i]);
+                }
+            }
+
+            iLGenerator.Emit(OpCodes.Call, method);
+
+            if (method.ReturnType.IsValueType)
+            {
+                iLGenerator.Emit(OpCodes.Box, method.ReturnType);
+            }
+
+            iLGenerator.Emit(OpCodes.Ret);
+
+            return dynamicMethod.CreateDelegate(typeof(TDelegate)) as TDelegate;
         }
 
         public static object GetDefaultValue(this Type type)

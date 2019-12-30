@@ -10,7 +10,17 @@ namespace EffectiveReflection
         public int Age { get; set; } = 2019;
         public int Year { get; set; } = 2002;
         private int Password { get; set; }  = 3201;
+
+
+        public int Add(int x, int y)
+        {
+            return x + y;
+        }
+
+        public void Print() => Console.WriteLine("Hello from test class!");
+        public int GetZero() => 0;
     }
+
     class Program
     {
         /*
@@ -41,7 +51,11 @@ namespace EffectiveReflection
            Property: PASSWORD
            Improved reflection: 00:00:00.0088557
            Default reflection: 00:00:00.0485557
-         */
+ 
+           Method test:
+           Improved reflection: 00:00:00.0009560
+           Default reflection: 00:00:00.0078839
+        */
         static void Main(string[] args)
         {
             Console.WriteLine("GET method tests: ");
@@ -49,6 +63,9 @@ namespace EffectiveReflection
 
             Console.WriteLine("SET method tests: ");
             CompareSetPropValueTime();
+
+            Console.WriteLine("Method test: ");
+            TestMethodInvokationTime();
         }
 
         static void CompareGetPropValueTime()
@@ -121,6 +138,34 @@ namespace EffectiveReflection
                 Console.WriteLine($"Default reflection: {takenTime}");
                 Console.WriteLine();
             }
+        }
+
+        static void TestMethodInvokationTime()
+        {
+            Type type = typeof(TestClass);
+            TestClass testClass = new TestClass();
+
+            var func = type.GetMethodFunc<Func<object, object, object, object>>("Add");
+
+            TimeSpan takenTime = Time.MeasureExecutionTime(() =>
+            {
+                for (int i = 0; i < 10000; ++i)
+                {
+                    var res = func(testClass, 3, 4);
+                }
+            });
+
+            Console.WriteLine($"Improved reflection: {takenTime}");
+
+            takenTime = Time.MeasureExecutionTime(() =>
+            {
+                for (int i = 0; i < 10000; ++i)
+                {
+                    var res = type.GetMethod("Add").Invoke(testClass, new object[] { 3, 4 });
+                }
+            });
+
+            Console.WriteLine($"Default reflection: {takenTime}");
         }
     }
 }
