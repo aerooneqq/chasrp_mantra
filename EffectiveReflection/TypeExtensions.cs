@@ -12,10 +12,10 @@ namespace EffectiveReflection
 
     public static class TypeExtensions
     {
-        private static BindingFlags PropertySelectionFlags = BindingFlags.Public | BindingFlags.NonPublic | 
-                                                             BindingFlags.Static | BindingFlags.Instance;
+        private static BindingFlags PropertySelectionFlags { get; } = BindingFlags.Public | BindingFlags.NonPublic |
+                                                                      BindingFlags.Static | BindingFlags.Instance;
 
-        private static OpCode[] LdArgCodes = { OpCodes.Ldarg_0, OpCodes.Ldarg_1, OpCodes.Ldarg_2, OpCodes.Ldarg_3 };
+        private static OpCode[] LdArgCodes { get; } = new[] { OpCodes.Ldarg_0, OpCodes.Ldarg_1, OpCodes.Ldarg_2, OpCodes.Ldarg_3 };
 
         public static GetPropValueDel GetGetPropValueDel(this Type type, string propName)
         {
