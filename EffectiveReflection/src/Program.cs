@@ -82,7 +82,7 @@ namespace EffectiveReflection
 
                 TimeSpan takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 99999; i++)
+                    for (int i = 0; i < 10000; i++)
                     {
                         var res = getPropValueDel(testObj);
                     }
@@ -93,7 +93,7 @@ namespace EffectiveReflection
                 var bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
                 takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 99999; i++)
+                    for (int i = 0; i < 10000; i++)
                     {
                         var res = type.GetProperty(propName, bindingFlags).GetMethod.Invoke(testObj, Array.Empty<object>());
                     }
@@ -118,7 +118,7 @@ namespace EffectiveReflection
 
                 TimeSpan takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 99999; i++)
+                    for (int i = 0; i < 10000; i++)
                     {
                         setDelegate(testObj, type.GetDefaultValue());
                     }
@@ -129,7 +129,7 @@ namespace EffectiveReflection
                 var bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
                 takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 99999; i++)
+                    for (int i = 0; i < 10000; i++)
                     {
                         type.GetProperty(propName, bindingFlags).SetMethod.Invoke(testObj, new object[] { type.GetDefaultValue() });
                     }

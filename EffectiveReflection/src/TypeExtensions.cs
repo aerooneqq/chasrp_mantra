@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
 using System.Linq;
 
 namespace EffectiveReflection
@@ -15,7 +14,8 @@ namespace EffectiveReflection
         private static BindingFlags PropertySelectionFlags { get; } = BindingFlags.Public | BindingFlags.NonPublic |
                                                                       BindingFlags.Static | BindingFlags.Instance;
 
-        private static OpCode[] LdArgCodes { get; } = new[] { OpCodes.Ldarg_0, OpCodes.Ldarg_1, OpCodes.Ldarg_2, OpCodes.Ldarg_3 };
+        private static BindingFlags MethodSelectionFlags { get; } = BindingFlags.Public | BindingFlags.NonPublic |
+                                                                    BindingFlags.Static | BindingFlags.Instance;
 
         public static GetPropValueDel GetGetPropValueDel(this Type type, string propName)
         {
@@ -26,23 +26,36 @@ namespace EffectiveReflection
                 throw new ArgumentException($"The property with name {propName} does not exist in {type.FullName}");
             }
 
+            // Get the property getter method
             MethodInfo getterMethod = property.GetGetMethod(true);
+
+            if (getterMethod is null)
+            {
+                throw new ArgumentException($"There is no getter method for property {property.Name}");
+            }
+
+            // Create the dynamic method which represents the getter method
             DynamicMethod getterDynamicMethod = new DynamicMethod("GetPropValue", typeof(object),
-                new[] { typeof(object) }, typeof(object), true);
+                new[] { typeof(object) }, type.Module, true);
             ILGenerator getterILGenerator = getterDynamicMethod.GetILGenerator();
 
+            // The first argument is an object in context of which the getter method is invoked. 
+            // If the method is static we don't need this object
             if (!property.GetMethod.IsStatic)
             {
                 getterILGenerator.Emit(OpCodes.Ldarg_0);
             }
 
+            //Call the getter method
             getterILGenerator.Emit(OpCodes.Call, getterMethod);
             
+            //If the returned type is a value type then we should box it
             if (getterMethod.ReturnType.IsValueType)
             {
                 getterILGenerator.Emit(OpCodes.Box, getterMethod.ReturnType);
             }
 
+            //Return from the method 
             getterILGenerator.Emit(OpCodes.Ret);
 
             return getterDynamicMethod.CreateDelegate(typeof(GetPropValueDel)) as GetPropValueDel;
@@ -63,15 +76,30 @@ namespace EffectiveReflection
             {
                 throw new ArgumentException($"The property with name {property.Name} does not have set method");
             }
-
+            
+            // Create the dynamic method which returns void, because we just need to set the value
+            // and accepts two objects params: the context object and new value 
             DynamicMethod setterDynamicMethod = new DynamicMethod("SetPropValue", typeof(void),
                 new[] { typeof(object), typeof(object) }, type, true);
 
             ILGenerator setterILGenerator = setterDynamicMethod.GetILGenerator();
 
-            setterILGenerator.Emit(OpCodes.Ldarg_0);
+            // If the method is static we don't need the context object
+            if (!setterMethod.IsStatic)
+            {
+                setterILGenerator.Emit(OpCodes.Ldarg_0);
+            }
+
+            // Load the new value
             setterILGenerator.Emit(OpCodes.Ldarg_1);
 
+            // If the type of the property is value type then we should unbox the new value
+            if (property.PropertyType.IsValueType)
+            {
+                setterILGenerator.Emit(OpCodes.Unbox_Any, property.PropertyType);
+            }
+
+            // Call the setter method
             setterILGenerator.Emit(OpCodes.Call, setterMethod);
 
             setterILGenerator.Emit(OpCodes.Ret);
@@ -82,7 +110,7 @@ namespace EffectiveReflection
         public static TDelegate GetMethodFunc<TDelegate>(this Type type, string methodName)
             where TDelegate : Delegate
         {
-            MethodInfo method = type.GetMethod(methodName);
+            MethodInfo method = type.GetMethod(methodName, MethodSelectionFlags);
 
             if (method is null)
             {
@@ -91,24 +119,29 @@ namespace EffectiveReflection
 
             IList<Type> paramsTypes = method.GetParameters().Select(p => p.ParameterType).ToList();
 
-            if (paramsTypes.Count > 3)
-            {
-                throw new NotSupportedException();
-            }
-
+            // Creating the dynamic method
+            // The type of return value and all method parameters is object, so then we 
+            // can cast it to Func<object, object ... object>
+            // Also we tell what is the module of the type and 
             Type o = typeof(object);
             DynamicMethod dynamicMethod = new DynamicMethod(methodName, o, 
                                                             paramsTypes.Prepend(o).Select(_ => o).ToArray(),
                                                             type.Module, true);
 
             ILGenerator iLGenerator = dynamicMethod.GetILGenerator();
+            
+            // Load the first argument (that is the object of the class, in context of which we invoke method)
+            // If the method is static we dont need to load the first parameter. 
+            if (!method.IsStatic)
+            {
+                iLGenerator.Emit(OpCodes.Ldarg, 0);
+            }
 
-            iLGenerator.Emit(OpCodes.Ldarg_0);
-            iLGenerator.Emit(OpCodes.Castclass, type);
-
+            // Load the method params. If the param type is a value type we should unbox it with
+            // Unbox_Any instruction, because otherwise this won't work
             for (int i = 0; i < paramsTypes.Count; ++i)
             {
-                iLGenerator.Emit(LdArgCodes[i + 1]);
+                iLGenerator.Emit(OpCodes.Ldarg, i + 1);
 
                 if (paramsTypes[i].IsValueType)
                 {
@@ -116,8 +149,11 @@ namespace EffectiveReflection
                 }
             }
 
+            // Call the method
             iLGenerator.Emit(OpCodes.Call, method);
 
+            // Return the result. 
+            // If the result is a value type then we should box it.
             if (method.ReturnType.IsValueType)
             {
                 iLGenerator.Emit(OpCodes.Box, method.ReturnType);
@@ -125,6 +161,9 @@ namespace EffectiveReflection
 
             iLGenerator.Emit(OpCodes.Ret);
 
+            // Return the delegate of type which is provided by user.
+            // User of this method can determine the type of the delegate by counting the methods params.
+            // This won't be so clean, but it is real to implement.
             return dynamicMethod.CreateDelegate(typeof(TDelegate)) as TDelegate;
         }
 
