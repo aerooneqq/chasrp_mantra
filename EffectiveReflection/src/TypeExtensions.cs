@@ -11,10 +11,10 @@ namespace EffectiveReflection
 
     public static class TypeExtensions
     {
-        private static BindingFlags PropertySelectionFlags { get; } = BindingFlags.Public | BindingFlags.NonPublic |
+        public static BindingFlags PropertySelectionFlags { get; } = BindingFlags.Public | BindingFlags.NonPublic |
                                                                       BindingFlags.Static | BindingFlags.Instance;
 
-        private static BindingFlags MethodSelectionFlags { get; } = BindingFlags.Public | BindingFlags.NonPublic |
+        public static BindingFlags MethodSelectionFlags { get; } = BindingFlags.Public | BindingFlags.NonPublic |
                                                                     BindingFlags.Static | BindingFlags.Instance;
 
         public static GetPropValueDel GetGetPropValueDel(this Type type, string propName)
@@ -121,8 +121,7 @@ namespace EffectiveReflection
 
             // Creating the dynamic method
             // The type of return value and all method parameters is object, so then we 
-            // can cast it to Func<object, object ... object>
-            // Also we tell what is the module of the type and 
+            // can cast it to Func<object, object ... object> 
             Type o = typeof(object);
             DynamicMethod dynamicMethod = new DynamicMethod(methodName, o, 
                                                             paramsTypes.Prepend(o).Select(_ => o).ToArray(),

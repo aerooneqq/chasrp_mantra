@@ -23,6 +23,7 @@ namespace EffectiveReflection
 
     class Program
     {
+        private const int ITER_COUNT = 100_000;
         /*
            Sample output:
 
@@ -79,10 +80,10 @@ namespace EffectiveReflection
                 Console.WriteLine($"Property: {propName.ToUpper()}");
 
                 GetPropValueDel getPropValueDel = type.GetGetPropValueDel(propName);
-
+                
                 TimeSpan takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < ITER_COUNT; i++)
                     {
                         var res = getPropValueDel(testObj);
                     }
@@ -93,7 +94,7 @@ namespace EffectiveReflection
                 var bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
                 takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < ITER_COUNT; i++)
                     {
                         var res = type.GetProperty(propName, bindingFlags).GetMethod.Invoke(testObj, Array.Empty<object>());
                     }
@@ -113,14 +114,16 @@ namespace EffectiveReflection
             foreach (string propName in propNames)
             {
                 Console.WriteLine($"Property: {propName.ToUpper()}");
-
+                
                 SetPropertyValueDel setDelegate = type.GetSetPropValueDel(propName);
-
+                
                 TimeSpan takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < ITER_COUNT; i++)
                     {
-                        setDelegate(testObj, type.GetDefaultValue());
+                        var defaultValue = type.GetProperty(propName, TypeExtensions.PropertySelectionFlags)
+                            .PropertyType.GetDefaultValue();
+                        setDelegate(testObj, defaultValue);
                     }
                 });
 
@@ -129,7 +132,7 @@ namespace EffectiveReflection
                 var bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
                 takenTime = Time.MeasureExecutionTime(() =>
                 {
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < ITER_COUNT; i++)
                     {
                         type.GetProperty(propName, bindingFlags).SetMethod.Invoke(testObj, new object[] { type.GetDefaultValue() });
                     }
@@ -149,7 +152,7 @@ namespace EffectiveReflection
 
             TimeSpan takenTime = Time.MeasureExecutionTime(() =>
             {
-                for (int i = 0; i < 10000; ++i)
+                for (int i = 0; i < ITER_COUNT; ++i)
                 {
                     var res = func(testClass, 3, 4);
                 }
@@ -159,7 +162,7 @@ namespace EffectiveReflection
 
             takenTime = Time.MeasureExecutionTime(() =>
             {
-                for (int i = 0; i < 10000; ++i)
+                for (int i = 0; i < ITER_COUNT; ++i)
                 {
                     var res = type.GetMethod("Add").Invoke(testClass, new object[] { 3, 4 });
                 }
