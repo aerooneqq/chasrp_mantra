@@ -107,7 +107,7 @@ namespace EffectiveReflection
             return setterDynamicMethod.CreateDelegate(typeof(SetPropertyValueDel)) as SetPropertyValueDel;
         }
 
-        public static MethodInvokerDelegate GetMethodFunc(this Type type, string methodName)
+        public static MethodInvokerDelegate GetMethodInvokerDelegate(this Type type, string methodName)
         {
             MethodInfo method = type.GetMethod(methodName, MethodSelectionFlags);
 
@@ -150,13 +150,13 @@ namespace EffectiveReflection
             // Call the method
             iLGenerator.Emit(OpCodes.Call, method);
 
-            // Return the result. 
             // If the result is a value type then we should box it.
             if (method.ReturnType.IsValueType)
             {
                 iLGenerator.Emit(OpCodes.Box, method.ReturnType);
             }
 
+            // Return the result. 
             iLGenerator.Emit(OpCodes.Ret);
 
             return MethodDelegateBuilder.GetMethodInvokerDelegate(dynamicMethod);

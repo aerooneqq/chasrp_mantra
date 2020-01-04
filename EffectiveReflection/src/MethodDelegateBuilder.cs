@@ -14,6 +14,7 @@ namespace EffectiveReflection
             IList<Type> methodParams = dynamicMethod.GetParameters().Select(param => param.ParameterType)
                 .ToList();
 
+            
             switch (methodParams.Count)
             {
                 case 0:

@@ -27,35 +27,37 @@ namespace EffectiveReflection
         /*
            Sample output:
 
-           GET method tests:
-           Property: AGE
-           Improved reflection: 00:00:00.0034034
-           Default reflection: 00:00:00.0351398
+            GET method tests: 
+            Property: AGE
+            Improved reflection: 00:00:00.0142251
+            Default reflection: 00:00:00.1999234
 
-           Property: YEAR
-           Improved reflection: 00:00:00.0019219
-           Default reflection: 00:00:00.0341300
+            Property: YEAR
+            Improved reflection: 00:00:00.0134401
+            Default reflection: 00:00:00.1793289
 
-           Property: PASSWORD
-           Improved reflection: 00:00:00.0021932
-           Default reflection: 00:00:00.0341035
+            Property: PASSWORD
+            Improved reflection: 00:00:00.0128743
+            Default reflection: 00:00:00.1864165
 
-           SET method tests:
-           Property: AGE
-           Improved reflection: 00:00:00.0113967
-           Default reflection: 00:00:00.0899024
+            SET method tests: 
+            Property: AGE
+            Improved reflection: 00:00:00.1352005
+            Default reflection: 00:00:00.2590783
 
-           Property: YEAR
-           Improved reflection: 00:00:00.0231877
-           Default reflection: 00:00:00.0761624
+            Property: YEAR
+            Improved reflection: 00:00:00.1258112
+            Default reflection: 00:00:00.2447622
 
-           Property: PASSWORD
-           Improved reflection: 00:00:00.0088557
-           Default reflection: 00:00:00.0485557
- 
-           Method test:
-           Improved reflection: 00:00:00.0009560
-           Default reflection: 00:00:00.0078839
+            Property: PASSWORD
+            Improved reflection: 00:00:00.1286078
+            Default reflection: 00:00:00.2402738
+            
+            Method test: 
+            Improved reflection: 00:00:00.0450473
+            Default reflection: 00:00:00.2973304
+            Native call: 00:00:00.0039790
+            Delegate DynamicInvoke call: 00:00:00.7341062
         */
         static void Main(string[] args)
         {
@@ -148,7 +150,7 @@ namespace EffectiveReflection
             Type type = typeof(TestClass);
             TestClass testClass = new TestClass();
 
-            var func = type.GetMethodFunc("Add");
+            var del = type.GetMethodInvokerDelegate("Add");
             Delegate methodDelegate = (Delegate)type.GetMethod("Add").CreateDelegate(
                 typeof(Func<TestClass, int, int, int>));
 
@@ -156,7 +158,7 @@ namespace EffectiveReflection
             {
                 for (int i = 0; i < ITER_COUNT; ++i)
                 {
-                    var res = func(testClass, 3, 4);
+                    var res = del(testClass, 3, 4);
                 }
             });
 
