@@ -23,7 +23,7 @@ namespace EffectiveReflection
 
     class Program
     {
-        private const int ITER_COUNT = 100_000;
+        private const int ITER_COUNT = 1_000_000;
         /*
            Sample output:
 
@@ -148,7 +148,9 @@ namespace EffectiveReflection
             Type type = typeof(TestClass);
             TestClass testClass = new TestClass();
 
-            var func = type.GetMethodFunc<Func<object, object, object, object>>("Add");
+            var func = type.GetMethodFunc("Add");
+            Delegate methodDelegate = (Delegate)type.GetMethod("Add").CreateDelegate(
+                typeof(Func<TestClass, int, int, int>));
 
             TimeSpan takenTime = Time.MeasureExecutionTime(() =>
             {
@@ -169,6 +171,26 @@ namespace EffectiveReflection
             });
 
             Console.WriteLine($"Default reflection: {takenTime}");
+
+            takenTime = Time.MeasureExecutionTime(() =>
+            {
+                for (int i = 0; i < ITER_COUNT; ++i)
+                {
+                    var res = testClass.Add(3, 4);
+                }
+            });
+
+            Console.WriteLine($"Native call: {takenTime}");
+
+            takenTime = Time.MeasureExecutionTime(() =>
+            {
+                for (int i = 0; i < ITER_COUNT; ++i)
+                {
+                    var res = methodDelegate.DynamicInvoke(testClass, 3, 4);
+                }
+            });
+
+            Console.WriteLine($"Delegate DynamicInvoke call: {takenTime}");
         }
     }
 }

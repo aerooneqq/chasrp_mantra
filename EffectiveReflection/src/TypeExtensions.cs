@@ -107,8 +107,7 @@ namespace EffectiveReflection
             return setterDynamicMethod.CreateDelegate(typeof(SetPropertyValueDel)) as SetPropertyValueDel;
         }
 
-        public static TDelegate GetMethodFunc<TDelegate>(this Type type, string methodName)
-            where TDelegate : Delegate
+        public static MethodInvokerDelegate GetMethodFunc(this Type type, string methodName)
         {
             MethodInfo method = type.GetMethod(methodName, MethodSelectionFlags);
 
@@ -160,10 +159,7 @@ namespace EffectiveReflection
 
             iLGenerator.Emit(OpCodes.Ret);
 
-            // Return the delegate of type which is provided by user.
-            // User of this method can determine the type of the delegate by counting the methods params.
-            // This won't be so clean, but it is real to implement.
-            return dynamicMethod.CreateDelegate(typeof(TDelegate)) as TDelegate;
+            return MethodDelegateBuilder.GetMethodInvokerDelegate(dynamicMethod);
         }
 
         public static object GetDefaultValue(this Type type)

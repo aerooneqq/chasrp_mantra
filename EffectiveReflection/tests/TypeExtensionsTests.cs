@@ -95,7 +95,7 @@ namespace EffectiveReflectionTests
             int x = 1;
             int y = 123;
 
-            var func = operationsType.GetMethodFunc<Func<object, object, object, object>>("AddInstancePrivate");
+            var func = operationsType.GetMethodFunc("AddInstancePrivate");
             Assert.AreEqual((int)func(operations, x, y), x + y);
         }
 
@@ -104,21 +104,21 @@ namespace EffectiveReflectionTests
         {
             int x = 1;
 
-            var func = operationsType.GetMethodFunc<Func<object, object, object>>("AddInstancePublic");
+            var func = operationsType.GetMethodFunc("AddInstancePublic");
             Assert.AreEqual((int)func(operations, x), x + 5);
         }
 
         [Test]
         public void TestInvokingPrivateStaticMethod()
         {
-            var func = operationsType.GetMethodFunc<Func<object, object, object, object>>("PrivateStaticMethod");
+            var func = operationsType.GetMethodFunc("PrivateStaticMethod");
             Assert.AreEqual((double)func(operations, 4, 4), double.NegativeInfinity);
         }
 
         [Test]
         public void TestInvokingPublicStaticMethod()
         {
-            var func = operationsType.GetMethodFunc<Func<object, object>>("PublicStaticMethod");
+            var func = operationsType.GetMethodFunc("PublicStaticMethod");
             Assert.AreEqual(func(operations), null);
         }
 
@@ -127,14 +127,14 @@ namespace EffectiveReflectionTests
         {
             A a = new A();
 
-            var func = operationsType.GetMethodFunc<Func<object, object, object>>("ReturnA");
+            var func = operationsType.GetMethodFunc("ReturnA");
             Assert.AreEqual(func(operations, a), a);
         }
 
         [Test]
         public void TestInvokingNonexistentMethod()
         {
-            Assert.Throws<ArgumentException>(() => operationsType.GetMethodFunc<Func<object, object>>("blablabla"));
+            Assert.Throws<ArgumentException>(() => operationsType.GetMethodFunc("blablabla"));
         }
     }
 }
