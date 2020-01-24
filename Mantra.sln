@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoopTest", "LoopTest\LoopTest.csproj", "{DE321DD3-07A7-435A-B223-F36F14B2EB12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindPiNumberFromRandomGenerator", "FindPiNumberFromRandomGenerator\FindPiNumberFromRandomGenerator.csproj", "{21B31141-F907-478C-9156-FFF5EDE32FDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{DE321DD3-07A7-435A-B223-F36F14B2EB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE321DD3-07A7-435A-B223-F36F14B2EB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE321DD3-07A7-435A-B223-F36F14B2EB12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B31141-F907-478C-9156-FFF5EDE32FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B31141-F907-478C-9156-FFF5EDE32FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B31141-F907-478C-9156-FFF5EDE32FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B31141-F907-478C-9156-FFF5EDE32FDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

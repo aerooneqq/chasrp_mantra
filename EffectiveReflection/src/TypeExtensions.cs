@@ -160,7 +160,7 @@ namespace EffectiveReflection
             iLGenerator.Emit(OpCodes.Ret);
 
             return MethodDelegateBuilder.GetMethodInvokerDelegate(dynamicMethod);
-        }
+        }   
 
         public static object GetDefaultValue(this Type type)
         {

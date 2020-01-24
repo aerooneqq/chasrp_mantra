@@ -152,7 +152,7 @@ namespace EffectiveReflection
 
             var del = type.GetMethodInvokerDelegate("Add");
             Delegate methodDelegate = (Delegate)type.GetMethod("Add").CreateDelegate(
-                typeof(Func<TestClass, int, int, int>));
+                typeof(Delegate));
 
             TimeSpan takenTime = Time.MeasureExecutionTime(() =>
             {
